@@ -4,3 +4,153 @@
 *:after {
   box-sizing: border-box;
 }
+
+body{
+  background-image: url('../images/site/checkerboard.jpg');
+  background-size: 500px 375px;
+  margin: 30px 100px;
+}
+
+#wrapper{
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 3px solid #39BDDD;
+  border-radius: 5px;
+}
+
+header{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+
+.siteName > a{
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  
+  color: #39BDDD;
+}
+
+#tools > a{
+  text-decoration: none;
+  color: black;
+}
+
+
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+nav > ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0px 5px;
+  margin: 0;
+  background-color: black;
+  color:white;
+  width: 100%;
+}
+nav > ul > li{
+  margin: 5px 0px;
+  padding: 0px 25px;
+}
+
+nav > ul > li:hover{
+  background-color: #39BDDD;
+  color: black;
+  cursor: pointer;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0px;
+}
+hero{
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background-image: url(../images/vehicles/delorean.jpg);
+  background-size: contain;
+  width: 100%;
+  height: 250px;
+  margin: 20px 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  background-color:  rgba(255, 255, 255, .7) ;
+  color: #39BDDD;
+  padding-left: 30px;
+  
+}
+.hero-card > h2{
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  color: #39BDDD;
+  opacity: 100%;
+}
+
+.upgrade-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 2fr));
+  grid-template-rows: repeat(2, minmax(150px, 2fr));
+  grid-gap: 10px;
+}
+
+.image-container{
+  background-color: #39BDDD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #39BDDD;
+  padding: 10px;
+  height: 95px;
+}
+
+.upgrade-grid > div{
+  text-align: center;
+}
+
+.delorean {
+  display:flex !important;
+  flex-wrap: wrap-reverse;
+}
+
+@media screen and (max-width: 600px){
+  #wrapper{
+    margin: 0px 0px;
+    border: none;
+  }
+  body{
+    margin: 0px;
+  }
+}
