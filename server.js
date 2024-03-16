@@ -35,9 +35,9 @@ app.get("/", baseController.buildHome, (req, res) => {
 app.use("/inv", inventoryRoute)
 
 
-
-
-
+app.get("/errorTest", (req, res,next) => {
+  throw new Error("Something went wrong, please try again later")
+});
 
 
 
