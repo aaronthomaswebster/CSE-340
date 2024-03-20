@@ -236,6 +236,92 @@ hero {
 }
 
 
+/*
+
+
+<form action="/login" method="post" class="login-form">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+    <p>No Account? <a href="/account/register">Sign-up</a></p>
+</form>*/
+
+.login-form, .registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 20px 0px;
+  background-color: #F7F5F7;
+  padding: 20px;
+  border: 3px solid #39BDDD;
+}
+
+.login-form>div,.registration-form>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0px;
+}
+
+.login-form>div>label, 
+.registration-form>div>label {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #39BDDD;
+}
+
+.login-form>div>input,
+.registration-form>div>input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+  border: 3px solid #39BDDD;
+  border-radius: 5px;
+}
+
+.login-form>button,
+.registration-form>button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+  border: 3px solid #39BDDD;
+  border-radius: 5px;
+  background-color: #39BDDD;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.login-form>p,
+.registration-form>p {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: #39BDDD;
+}
+
+
+input:required:invalid, input:focus:invalid {
+  border-left: red solid 6px;
+  transition: all 0.5s;
+ }
+  input:required:valid {
+    border-left: #1db74f solid 6px;
+  }
+
+
 
 
 
