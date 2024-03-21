@@ -4,22 +4,22 @@
     </h1>
     <% } else { res.redirect('/') } %>
 <%- messages() %>
-<!--
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
 
-    Display a login HTML form that accepts an email address (this will be the username) and password.
-The form should include a button to submit the login credentials.
-Enforcement of the input data does not have to be done at this time.
-Beneath the form should be a link that allows the user to send a URL that would request delivery of a registration view, if they do not yet have an account.
--->
-
-<form action="/login" method="post" class="login-form">
+<form action="/account/login" method="post" class="login-form" id="loginForm">
     <div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+        <input type="email" id="email" name="account_email" value="<%= locals.account_email %>" required>
     </div>
     <div>
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" >
+        <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" >
         <div>Passwords must be a minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</div>
     </div>
     <button type="submit">Login</button>
