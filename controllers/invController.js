@@ -107,7 +107,7 @@ invCont.addClassification =  async function(req, res) {
 invCont.buildAddInventory =  async function(req, res, next) {
   let nav = await utilities.getNav()
   let classification_select = await utilities.buildClassificationList()
-  res.render("./inventory/add-Inventory", {
+  res.render("./inventory/add-inventory", {
     title: "Add New Inventory",
     nav,
     errors: null,
