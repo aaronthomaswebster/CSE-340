@@ -1,0 +1,62 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>.
+
+
+  
+<p>All Fields are required.</p>
+
+
+<form action="/inv/add-inventory" method="post" class="registration-form">
+    <div>
+        <label for="classification_id">Classification Name</label>
+        <%- classification_select %>
+    </div>
+    <div>
+        <label for="make">Make</label>
+        <input type="text" id="make" name="inv_make" required pattern="^[a-zA-Z]+$" value="<%= locals.inv_make %>" title="Value must be a string." >
+    </div>
+    <div>
+        <label for="model">Model</label>
+        <input type="text" id="model" name="inv_model" required pattern="^[a-zA-Z]+$" value="<%= locals.inv_model %>" title="Value must be a string." >
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="inv_description" rows="5" required pattern="^[a-zA-Z]+$" value="<%= locals.inv_description %>" title="Value must be a string." ></textarea>
+    </div>
+    <div>
+        <label for="image_path">Image Path</label>
+        <input type="text" id="image_path" name="inv_image" required pattern="^\/[a-zA-Z0-9_\-\/.]+$" value="<%- locals.inv_image || '/images/vehicles/no-image.png' %>" title="Value must be a valid path." >
+    </div>
+    <div>
+        <label for="thumbnail_path">Thumbnail Path</label>
+        <input type="text" id="thumbnail_path" name="inv_thumbnail" required pattern="^\/[a-zA-Z0-9_\-\/.]+$" value="<%- locals.inv_thumbnail || '/images/vehicles/no-image.png' %>" title="Value must be a valid path." >
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="text" id="price" name="inv_price" required pattern="^[0-9]+$" value="<%= locals.inv_price %>" title="Value must be an integer or decimal number." >
+    </div>
+    <div>
+        <label for="year">Year</label>
+        <input type="text" id="year" name="inv_year" required pattern="^\d{4}$" value="<%= locals.inv_year %>" title="Value must be a four digit year." >
+    </div>
+    <div>
+        <label for="milage">Milage</label>
+        <input type="text" id="milage" name="inv_miles" required pattern="^[0-9]+$" value="<%= locals.inv_miles %>" title="Value must be an integer." >
+    </div>
+    <div>
+        <label for="color">Color</label>
+        <input type="text" id="color" name="inv_color" required pattern="^[a-zA-Z]+$" value="<%= locals.inv_color %>" title="Value must be a string." >
+    </div>
+    <button type="submit">Add Vehichle</button>
+</form>
