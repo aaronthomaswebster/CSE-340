@@ -3,7 +3,7 @@
 -- DROP TYPE IF EXISTS public.account_type;
 
 CREATE TYPE PUBLIC.ACCOUNT_TYPE AS
-    ENUM ('Client', 'Emploee', 'Admin');
+    ENUM ('Client', 'Employee', 'Admin');
     ALTER TYPE PUBLIC.ACCOUNT_TYPE OWNER TO CSE340AW;
  -- create table
 CREATE TABLE PUBLIC.CLASSIFICATION( 

@@ -306,6 +306,12 @@ form>button:hover {
   color: #39BDDD;
 }
 
+form>button:disabled {
+  background-color: #F7F5F7 !important;
+  color: #6999a5 !important;
+  cursor: not-allowed;
+}
+
 form>p {
   margin: 0;
   padding: 0;
