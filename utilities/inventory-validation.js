@@ -129,7 +129,7 @@ validate.checkVehichleData = async (req, res, next) => {
     inv_color,
     classification_id,
   } = req.body;
-  let classification_select = await utilities.buildClassificationList()
+  let classificationSelect = await utilities.buildClassificationList()
   let errors = [];
   errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -148,7 +148,7 @@ validate.checkVehichleData = async (req, res, next) => {
       inv_miles,
       inv_color,
       classification_id,
-      classification_select
+      classificationSelect
     });
     return;
   }

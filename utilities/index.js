@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken")
+
 require("dotenv").config()
 const invModel = require("../models/inventory-model");
 const Util = {};
@@ -159,6 +160,7 @@ Util.checkJWTToken = (req, res, next) => {
       res.clearCookie("jwt")
       return res.redirect("/account/login")
      }
+     console.log({ accountData })
      res.locals.accountData = accountData
      res.locals.loggedin = 1
      next()
@@ -177,6 +179,15 @@ Util.checkJWTToken = (req, res, next) => {
     next()
   } else {
     req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
+
+ Util.checkAdminOrAdmin = (req, res, next) => {
+  if (res?.locals?.accountData?.account_type === "Employee" || res?.locals?.accountData?.account_type === "Admin"){
+    next()
+  } else {
+    req.flash("notice", "You are not authorized to view this page.")
     return res.redirect("/account/login")
   }
  }
