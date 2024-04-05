@@ -83,7 +83,7 @@ Util.buildClassificationGrid = async function (data) {
 /* **************************************
  * Build the single vehichle view HTML
  * ************************************ */
-Util.buildVehicleDetails = async function (data) {
+Util.buildVehicleDetails = async function (data, isLoggedin) {
   console.log(data);
   /*
     
@@ -107,10 +107,12 @@ Util.buildVehicleDetails = async function (data) {
   // details += '</div>';
   details += '<div class="detail-container">'
   details += '<h2>' + data[0].inv_make + ' ' + data[0].inv_model + ' Details</h2>';
-  if(data[0].account_id == null){
-    details += '<p><a href="/account/favorites/'+data[0].inv_id+'/add" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;" >Add to Favorites</a></p>';
-  } else {
-    details += '<p><a href="/account/favorites/'+data[0].inv_id+'/remove" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;" >Remove from Favorites</a></p>';
+  if(isLoggedin){
+    if(data[0].account_id == null){
+      details += '<p><a href="/account/favorites/'+data[0].inv_id+'/add" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;" >Add to Favorites</a></p>';
+    } else {
+      details += '<p><a href="/account/favorites/'+data[0].inv_id+'/remove" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;" >Remove from Favorites</a></p>';
+    }
   }
 
   details += '<p class="vehicle-price"><b>Price: $' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</b></p>';
