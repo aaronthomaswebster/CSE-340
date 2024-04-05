@@ -56,5 +56,13 @@ router.get(
   utilities.handleErrors(accountController.accountLogout)
 );
 
+// Route to build inventory by classification view
+router.get("/favorites",  utilities.handleErrors(accountController.buildMyFavorites));
+
+// Route to build inventory by classification view
+router.get("/favorites/:inv_id/add",  utilities.handleErrors(accountController.addFavorite));
+
+// Route to build inventory by classification view
+router.get("/favorites/:inv_id/remove",  utilities.handleErrors(accountController.removeFavorite));
 
 module.exports = router;

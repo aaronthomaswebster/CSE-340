@@ -30,12 +30,14 @@ async function getInventoryByClassificationId(classification_id) {
 /* ***************************
  *  Get all inventory items and details by vehicle_id
  * ************************** */
-async function getInventoryById(inventory_id) {
+async function getInventoryById(inventory_id, account_id) {
   try {
     const data = await pool.query(
-      `SELECT * FROM public.inventory 
-        WHERE inv_id = $1`,
-      [inventory_id]
+      `SELECT i.*, f.account_id FROM public.inventory as i
+        LEFT JOIN public.favorites as f
+        ON f.inv_id = i.inv_id and f.account_id = $2
+        WHERE i.inv_id = $1`,
+      [inventory_id, account_id]
     );
     return data.rows;
   } catch (error) {

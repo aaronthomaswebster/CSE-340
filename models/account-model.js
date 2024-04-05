@@ -82,4 +82,51 @@ async function changePassword (hased_password, account_id) {
 
 
 
-module.exports = { registerAccount, checkExistingEmail,getAccountByEmail, updateAccount, changePassword };
+/* ***************************
+ *  Get all favorite inventory items
+ * ************************** */
+async function getMyFavorites(account_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory AS i 
+        JOIN public.classification AS c 
+        ON i.classification_id = c.classification_id 
+        JOIN public.favorites AS f
+        on f.inv_id = i.inv_id and f.account_id = $1`,
+      [account_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+async function addFavorite(account_id, inv_id) {
+  try {
+    const data = await pool.query(
+      `INSERT INTO public.favorites (account_id, inv_id) VALUES ($1, $2)`,
+      [account_id, inv_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+async function removeFavorite(account_id, inv_id) {
+  try {
+    const data = await pool.query(
+      `DELETE FROM public.favorites WHERE account_id = $1 and inv_id = $2`,
+      [account_id, inv_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+
+module.exports = { registerAccount, checkExistingEmail,getAccountByEmail, updateAccount, changePassword, getMyFavorites, addFavorite, removeFavorite};

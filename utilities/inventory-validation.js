@@ -14,9 +14,9 @@ validate.classificationRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 1 })
-      .withMessage("Please provide a first name.")
+      .withMessage("Please provide a name for your classification.")
       .isAlpha()
-      .withMessage("First name must be alphabetic characters only."),
+      .withMessage("Your name must contain only alphabetic characters."),
   ];
 };
 /* ******************************

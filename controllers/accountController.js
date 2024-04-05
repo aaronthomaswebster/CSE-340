@@ -241,6 +241,43 @@ async function accountLogout(req, res) {
   });
 }
 
+
+
+/* ***************************
+ *  Build My Favorites view
+ * ************************** */
+async function buildMyFavorites(req, res, next) {
+  const classification_id = req.params.classificationId;
+  const data = await accountModel.getMyFavorites(res?.locals?.accountData?.account_id);
+  const grid = await utilities.buildClassificationGrid(data);
+  let nav = await utilities.getNav();
+  res.render("./account/favorites", {
+    title: "My Favorite Vehicles",
+    nav,
+    grid,
+  });
+};
+
+/* ***************************
+ *  add Favorites 
+ * ************************** */
+async function addFavorite(req, res, next) {
+  const inv_id = req.params.inv_id;
+  const data = await accountModel.addFavorite(res?.locals?.accountData?.account_id,inv_id);
+  buildMyFavorites(req, res, next);
+};
+
+
+/* ***************************
+ *  add Favorites 
+ * ************************** */
+async function removeFavorite(req, res, next) {
+  const inv_id = req.params.inv_id;
+  const data = await accountModel.removeFavorite(res?.locals?.accountData?.account_id,inv_id);
+  buildMyFavorites(req, res, next);
+};
+
+
 module.exports = {
   buildLogin,
   buildRegister,
@@ -251,4 +288,7 @@ module.exports = {
   updateAccount,
   changePassword,
   accountLogout,
+  buildMyFavorites,
+  addFavorite,
+  removeFavorite
 };
